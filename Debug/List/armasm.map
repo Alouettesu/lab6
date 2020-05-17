@@ -1,0 +1,125 @@
+###############################################################################
+#
+# IAR ELF Linker V8.50.1.245/W32 for ARM                  16/May/2020  22:05:27
+# Copyright 2007-2020 IAR Systems AB.
+#
+#    Output file  =  D:\lab\lab6\armasm\Debug\Exe\armasm.out
+#    Map file     =  D:\lab\lab6\armasm\Debug\List\armasm.map
+#    Command line =
+#        -f C:\Users\Alouette\AppData\Local\Temp\EW2726.tmp
+#        (D:\lab\lab6\armasm\Debug\Obj\asm.o
+#        D:\lab\lab6\armasm\Debug\Obj\main.o --no_out_extension -o
+#        D:\lab\lab6\armasm\Debug\Exe\armasm.out --redirect
+#        _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb --map
+#        D:\lab\lab6\armasm\Debug\List\armasm.map --config
+#        D:\lab\lab6\armasm\armasm.icf --semihosting --no_library_search
+#        --entry __iar_program_start --vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+__SystemLibrary = DLib
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at address 0x1'0000 { ro section .intvec };
+"P1":  place in [from 0x0 to 0xffff'ffff] { ro };
+define block CSTACK with size = 8K, alignment = 8 { };
+define block SVC_STACK with size = 4K, alignment = 8 { };
+define block IRQ_STACK with size = 4K, alignment = 8 { };
+define block FIQ_STACK with size = 256, alignment = 8 { };
+define block UND_STACK with size = 256, alignment = 8 { };
+define block ABT_STACK with size = 256, alignment = 8 { };
+define block HEAP with size = 32K, alignment = 8 { };
+"P2":  place in [from 0x10'0000 to 0x1f'ffff] {
+          rw, block CSTACK, block SVC_STACK, block IRQ_STACK, block FIQ_STACK,
+          block UND_STACK, block ABT_STACK, block HEAP };
+
+No sections matched the following patterns:
+
+  rw  in "P2"
+
+
+  Section      Kind       Address    Size  Object
+  -------      ----       -------    ----  ------
+"A0":                                0xd8
+  .intvec      ro code   0x1'0000    0xd0  asm.o [1]
+  Veneer       ro code   0x1'00d0     0x8  - Linker created -
+                       - 0x1'00d8    0xd8
+
+"P1":                                 0x4
+  .text        ro code   0x1'00d8     0x4  main.o [1]
+                       - 0x1'00dc     0x4
+
+"P2":                              0x4000
+  CSTACK                0x10'0000  0x2000  <Block>
+    CSTACK     uninit   0x10'0000  0x2000  <Block tail>
+  SVC_STACK             0x10'2000  0x1000  <Block>
+    SVC_STACK  uninit   0x10'2000  0x1000  <Block tail>
+  IRQ_STACK             0x10'3000  0x1000  <Block>
+    IRQ_STACK  uninit   0x10'3000  0x1000  <Block tail>
+                      - 0x10'4000  0x4000
+
+Unused ranges:
+
+       From           To         Size
+       ----           --         ----
+        0x0       0xffff     0x1'0000
+   0x1'00dc     0xf'ffff     0xe'ff24
+  0x10'4000  0xffff'ffff  0xffef'c000
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module          ro code  rw data
+    ------          -------  -------
+command line/config:
+    --------------------------------
+    Total:
+
+D:\lab\lab6\armasm\Debug\Obj: [1]
+    asm.o               208
+    main.o                4
+    --------------------------------
+    Total:              212
+
+    Linker created        8   16'384
+------------------------------------
+    Grand Total:        220   16'384
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                  Address  Size  Type      Object
+-----                  -------  ----  ----      ------
+.bss$$Base                 0x0         --   Gb  - Linker created -
+.bss$$Limit                0x0         --   Gb  - Linker created -
+CSTACK$$Base         0x10'0000         --   Gb  - Linker created -
+CSTACK$$Limit        0x10'2000         --   Gb  - Linker created -
+IRQ_STACK$$Base      0x10'3000         --   Gb  - Linker created -
+IRQ_STACK$$Limit     0x10'4000         --   Gb  - Linker created -
+SVC_STACK$$Base      0x10'2000         --   Gb  - Linker created -
+SVC_STACK$$Limit     0x10'3000         --   Gb  - Linker created -
+__iar_program_start   0x1'0050        Code  Gb  asm.o [1]
+main                  0x1'00d9   0x4  Code  Gb  main.o [1]
+vectors_start         0x1'0000        Code  Gb  asm.o [1]
+
+
+[1] = D:\lab\lab6\armasm\Debug\Obj
+
+     220 bytes of readonly  code memory
+  16'384 bytes of readwrite data memory
+
+Errors: none
+Warnings: none
