@@ -657,7 +657,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>armasm.bin</state>
+                    <state>lab6.bin</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
@@ -2126,16 +2126,10 @@
                 <name>$PROJ_DIR$\..\Application\inc\FreeRTOSConfig.h</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\Application\inc\mini-printf.h</name>
-            </file>
-            <file>
                 <name>$PROJ_DIR$\..\Application\inc\print.h</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Application\inc\receive.h</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\Application\inc\stat.h</name>
             </file>
         </group>
         <group>
@@ -2156,7 +2150,7 @@
                 <name>$PROJ_DIR$\..\Application\src\sections_init.c</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\..\Application\startup.s</name>
+                <name>$PROJ_DIR$\..\Application\src\startup.s</name>
             </file>
         </group>
     </group>

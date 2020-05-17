@@ -11,12 +11,11 @@
 ///* Task function - may be instantiated in multiple tasks */
 void vTaskFunction( void *pvParameters )
 {
-    const portCHAR* taskName;
+    portCHAR* taskName;
     UBaseType_t  delay;
 
-    taskName = "Task 1\r\n";
+    taskName = pcTaskGetName(NULL);
     delay = 2000;
-    char *str = pvPortMalloc(40);    
     for( ; ; )
     {
         /* Print out the name of this task. */
@@ -68,6 +67,11 @@ static void FreeRTOS_Error(const portCHAR* msg)
     for ( ; ; );
 }
 
+//void vApplicationIdleHook()
+//{
+//  
+//}
+
 /* Startup function that creates and runs two FreeRTOS tasks */
 void main(void)
 {
@@ -98,7 +102,7 @@ void main(void)
     }
 
     /* And finally create two tasks: */
-    if ( pdPASS != xTaskCreate(vTaskFunction, "task1", 128, NULL,
+    if ( pdPASS != xTaskCreate(vTaskFunction, "task1\r\n", 128, NULL,
                                PRIOR_PERIODIC, NULL) )
     {
         FreeRTOS_Error("Could not create task1\r\n");
