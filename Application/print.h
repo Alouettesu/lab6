@@ -25,7 +25,7 @@ limitations under the License.
 #ifndef _PRINT_H_
 #define _PRINT_H_
 
-//#include <FreeRTOS.h>
+#include <FreeRTOS.h>
 
 
 int16_t printInit(uint16_t uart_nr);

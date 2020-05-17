@@ -10,9 +10,21 @@
 
 # IAR Debug Exe  
 **/Exe/*.sim  
+**/Exe/*.out
+**/Exe/*.bin
+**/Exe/*.hex
+**/Exe/*.i
+**/Exe/*.map
 
 # IAR Debug Obj  
 **/Obj/*.pbd  
 **/Obj/*.pbd.*  
 **/Obj/*.pbi  
 **/Obj/*.pbi.*
+**/Obj/*.o
+**.Obj/*.xcl
+
+*.dep
+
+# IAR log
+**/Obj/*ninja*

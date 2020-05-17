@@ -25,8 +25,8 @@ limitations under the License.
 
 #include <stddef.h>
 
-//#include <FreeRTOS.h>
-//#include <task.h>
+#include <FreeRTOS.h>
+#include <task.h>
 #include <mini-printf.h>
 
 #include "app_config.h"
