@@ -29,6 +29,7 @@
 **/Obj/*.pbw
 
 *.dep
+*.ewt
 
 # IAR log
 **/Obj/*ninja*
