@@ -7,6 +7,8 @@
 **/settings/*.dni  
 **/settings/*.wsdt  
 **/settings/*.wspos  
+**/settings/*.dnx
+**/settings/*.reggroups
 
 # IAR Debug Exe  
 **/Exe/*.sim  
@@ -14,7 +16,8 @@
 **/Exe/*.bin
 **/Exe/*.hex
 **/Exe/*.i
-**/Exe/*.map
+
+**/List/*.map
 
 # IAR Debug Obj  
 **/Obj/*.pbd  
@@ -22,7 +25,8 @@
 **/Obj/*.pbi  
 **/Obj/*.pbi.*
 **/Obj/*.o
-**.Obj/*.xcl
+**/Obj/*.xcl
+**/Obj/*.pbw
 
 *.dep
 
