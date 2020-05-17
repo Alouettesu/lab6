@@ -1,28 +1,3 @@
-/*
-Copyright 2013, Jernej Kovacic
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-
-
-/**
- * @file
- * A simple demo application.
- *
- * @author Jernej Kovacic
- */
-
-
 #include <stddef.h>
 
 #include <FreeRTOS.h>
@@ -31,18 +6,6 @@ limitations under the License.
 #include "app_config.h"
 #include "print.h"
 #include "receive.h"
-
-
-/* Struct with settings for each task */
-typedef struct _paramStruct
-{
-    portCHAR* text;                  /* text to be printed by the task */
-    UBaseType_t  delay;              /* delay in milliseconds */
-} paramStruct;
-
-/* Default parameters if no parameter struct is available */
-static const portCHAR defaultText[] = "<NO TEXT>\r\n";
-static const UBaseType_t defaultDelay = 1000;
 
 
 ///* Task function - may be instantiated in multiple tasks */
@@ -60,17 +23,9 @@ void vTaskFunction( void *pvParameters )
         vPrintMsg(taskName);
         vTaskDelay( delay / portTICK_RATE_MS );
     }
-
-    /*
-     * If the task implementation ever manages to break out of the
-     * infinite loop above, it must be deleted before reaching the
-     * end of the function!
-     */
     vTaskDelete(NULL);
 }
 
-
-/* Fixed frequency periodic task function - may be instantiated in multiple tasks */
 void vPeriodicTaskFunction(void* pvParameters)
 {
     const portCHAR* taskName;
@@ -81,18 +36,13 @@ void vPeriodicTaskFunction(void* pvParameters)
     taskName = "Periodic task\r\n";
     delay = 3000;
 
-    /*
-     * This variable must be initialized once.
-     * Then it will be updated automatically by vTaskDelayUntil().
-     */
+    // Get time of last task execution
     lastWakeTime = xTaskGetTickCount();
 
     for( ; ; )
     {
         /* Print out the name of this task. */
-
         vPrintMsg(taskName);
-
         /*
          * The task will unblock exactly after 'delay' milliseconds (actually
          * after the appropriate number of ticks), relative from the moment
@@ -100,12 +50,6 @@ void vPeriodicTaskFunction(void* pvParameters)
          */
         vTaskDelayUntil( &lastWakeTime, delay / portTICK_RATE_MS );
     }
-
-    /*
-     * If the task implementation ever manages to break out of the
-     * infinite loop above, it must be deleted before reaching the
-     * end of the function!
-     */
     vTaskDelete(NULL);
 }
 
@@ -133,12 +77,6 @@ void main(void)
         FreeRTOS_Error("Initialization of print failed\r\n");
     }
 
-    /*
-     * I M P O R T A N T :
-     * Make sure (in startup.s) that main is entered in Supervisor mode.
-     * When vTaskStartScheduler launches the first task, it will switch
-     * to System mode and enable interrupt exceptions.
-     */
     vDirectPrintMsg("= = = T E S T   S T A R T E D = = =\r\n\r\n");
 
     /* Init of receiver related tasks: */
